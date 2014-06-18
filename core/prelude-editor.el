@@ -45,6 +45,9 @@
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
 (setq-default tab-width 8)            ;; but maintain correct appearance
 
+;; Newline at end of file
+(setq require-final-newline t)
+
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 
@@ -380,16 +383,19 @@ indent yanked text (with prefix arg don't indent)."
 (global-set-key [remap kill-ring-save] 'easy-kill)
 (global-set-key [remap mark-sexp] 'easy-mark)
 
-;;
+;; operate-on-number
 (require 'operate-on-number)
 (smartrep-define-key global-map "C-c ."
   '(("+" . apply-operation-to-number-at-point)
     ("-" . apply-operation-to-number-at-point)
     ("*" . apply-operation-to-number-at-point)
     ("/" . apply-operation-to-number-at-point)
+    ("\\" . apply-operation-to-number-at-point)
     ("^" . apply-operation-to-number-at-point)
     ("<" . apply-operation-to-number-at-point)
     (">" . apply-operation-to-number-at-point)
+    ("#" . apply-operation-to-number-at-point)
+    ("%" . apply-operation-to-number-at-point)
     ("'" . operate-on-number-at-point)))
 
 (provide 'prelude-editor)
