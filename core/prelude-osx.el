@@ -67,7 +67,11 @@ Windows external keyboard from time to time."
 (menu-bar-mode +1)
 
 ;; Enable emoji, and stop the UI from freezing when trying to display them.
-(set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
+;; Fixes a symbol definition void error regarding set-fontset-font in
+;; terminal environment #921 https://github.com/bbatsov/prelude/pull/921
+(if window-system
+  (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend))
+;;(set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
 (provide 'prelude-osx)
 ;;; prelude-osx.el ends here
